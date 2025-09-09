@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Générateur de Why - Trouvez votre Raison d'Être</title>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -444,6 +445,12 @@
                 <div class="step-dot"></div>
                 <div class="step-dot"></div>
                 <div class="step-dot"></div>
+            </div>
+            
+            <div style="margin-top: 20px; text-align: center;">
+                <button class="btn" onclick="loadTestData()" style="background: #17a2b8; font-size: 0.9rem; padding: 10px 20px;">
+                    🧪 Charger des données de test
+                </button>
             </div>
         </div>
 
@@ -1062,9 +1069,195 @@
             };
         }
 
-        // Fonctions utilitaires
+        // Fonction pour nettoyer les caractères spéciaux pour le PDF
+        function cleanTextForPDF(text) {
+            return text
+                .replace(/à/g, 'a').replace(/À/g, 'A')
+                .replace(/é/g, 'e').replace(/É/g, 'E')
+                .replace(/è/g, 'e').replace(/È/g, 'E')
+                .replace(/ê/g, 'e').replace(/Ê/g, 'E')
+                .replace(/ë/g, 'e').replace(/Ë/g, 'E')
+                .replace(/î/g, 'i').replace(/Î/g, 'I')
+                .replace(/ï/g, 'i').replace(/Ï/g, 'I')
+                .replace(/ô/g, 'o').replace(/Ô/g, 'O')
+                .replace(/ö/g, 'o').replace(/Ö/g, 'O')
+                .replace(/ù/g, 'u').replace(/Ù/g, 'U')
+                .replace(/û/g, 'u').replace(/Û/g, 'U')
+                .replace(/ü/g, 'u').replace(/Ü/g, 'U')
+                .replace(/ÿ/g, 'y').replace(/Ÿ/g, 'Y')
+                .replace(/ç/g, 'c').replace(/Ç/g, 'C')
+                .replace(/'/g, '\'').replace(/'/g, '\'')
+                .replace(/"/g, '"').replace(/"/g, '"')
+                .replace(/…/g, '...')
+                .replace(/–/g, '-').replace(/—/g, '-');
+        }
+
+        // Génération PDF
         function downloadWhyPDF() {
-            alert('📄 Fonctionnalité de téléchargement PDF en cours de développement');
+            // Vérifier que jsPDF est disponible
+            if (typeof window.jspdf === 'undefined' && typeof jsPDF === 'undefined') {
+                alert('❌ Erreur : jsPDF non disponible');
+                return;
+            }
+            
+            // Essayer d'accéder à jsPDF via différentes méthodes
+            let jsPDFClass;
+            if (typeof jsPDF !== 'undefined') {
+                jsPDFClass = jsPDF; // Accès direct global
+            } else if (window.jspdf && window.jspdf.jsPDF) {
+                jsPDFClass = window.jspdf.jsPDF; // Accès via namespace
+            } else {
+                alert('❌ Impossible d\'accéder à jsPDF');
+                return;
+            }
+            
+            const doc = new jsPDFClass('p', 'mm', 'a4');
+            
+            // Configuration
+            const margin = 20;
+            let y = margin;
+            const pageWidth = doc.internal.pageSize.width;
+            const pageHeight = doc.internal.pageSize.height;
+            
+            // Couleurs
+            const primaryColor = [102, 126, 234];
+            const secondaryColor = [118, 75, 162];
+            const textColor = [45, 55, 72];
+            const lightGray = [248, 249, 250];
+            
+            // En-tête avec dégradé simulé
+            doc.setFillColor(...primaryColor);
+            doc.rect(0, 0, pageWidth, 50, 'F');
+            
+            // Titre principal
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(28);
+            doc.text('MON WHY PERSONNEL', margin, 25);
+            
+            doc.setFontSize(12);
+            doc.text('Raison d\'etre et mission de vie', margin, 35);
+            doc.text('Genere le ' + new Date().toLocaleDateString('fr-FR'), margin, 42);
+            
+            y = 70;
+            
+            // Section Why principal
+            doc.setFillColor(...lightGray);
+            doc.rect(margin, y, pageWidth - 2*margin, 40, 'F');
+            doc.setDrawColor(...primaryColor);
+            doc.setLineWidth(2);
+            doc.rect(margin, y, pageWidth - 2*margin, 40, 'S');
+            
+            doc.setTextColor(...textColor);
+            doc.setFontSize(14);
+            doc.text('MON WHY', margin + 5, y + 10);
+            
+            doc.setFontSize(11);
+            const whyText = cleanTextForPDF(document.getElementById('finalWhy').textContent);
+            const whyLines = doc.splitTextToSize(whyText, pageWidth - 2*margin - 10);
+            doc.text(whyLines, margin + 5, y + 20);
+            
+            y += 55;
+            
+            // Section Mission
+            doc.setFontSize(14);
+            doc.setTextColor(...primaryColor);
+            doc.text('MA MISSION', margin, y);
+            
+            y += 10;
+            doc.setFontSize(10);
+            doc.setTextColor(...textColor);
+            const missionText = cleanTextForPDF(document.getElementById('missionText').textContent);
+            const missionLines = doc.splitTextToSize(missionText, pageWidth - 2*margin);
+            doc.text(missionLines, margin, y);
+            
+            y += (missionLines.length * 5) + 15;
+            
+            // Section Valeurs
+            doc.setFontSize(14);
+            doc.setTextColor(...primaryColor);
+            doc.text('MES VALEURS FONDAMENTALES', margin, y);
+            
+            y += 10;
+            doc.setFontSize(10);
+            doc.setTextColor(...textColor);
+            const valuesText = cleanTextForPDF(document.getElementById('valuesText').textContent);
+            const valuesArray = valuesText.split(' • ');
+            valuesArray.forEach((value, index) => {
+                if (value.trim()) {
+                    doc.text(`• ${cleanTextForPDF(value.trim())}`, margin, y + (index * 6));
+                }
+            });
+            
+            y += (valuesArray.length * 6) + 15;
+            
+            // Section Impact
+            if (y < pageHeight - 60) {
+                doc.setFontSize(14);
+                doc.setTextColor(...primaryColor);
+                doc.text('MON IMPACT SOUHAITE', margin, y);
+                
+                y += 10;
+                doc.setFontSize(10);
+                doc.setTextColor(...textColor);
+                const impactText = cleanTextForPDF(document.getElementById('impactText').textContent);
+                const impactLines = doc.splitTextToSize(impactText, pageWidth - 2*margin);
+                doc.text(impactLines, margin, y);
+                
+                y += (impactLines.length * 5) + 15;
+            }
+            
+            // Section Réponses détaillées (nouvelle page si nécessaire)
+            if (y > pageHeight - 80) {
+                doc.addPage();
+                y = margin;
+            }
+            
+            doc.setFontSize(16);
+            doc.setTextColor(...primaryColor);
+            doc.text('MES REPONSES DETAILLEES', margin, y);
+            
+            y += 15;
+            
+            // Ajouter les réponses clés de manière compacte
+            const keyResponses = [
+                { label: 'Ce qui me passionne', value: userResponses.emotion?.passion || '' },
+                { label: 'Mon moment le plus vivant', value: userResponses.motivations?.moment_vivant || '' },
+                { label: 'Ce qui me met en colère', value: userResponses.motivations?.colere || '' },
+                { label: 'Mes super-pouvoirs', value: userResponses.unicite?.super_pouvoirs || '' },
+                { label: 'Mon approche unique', value: userResponses.unicite?.approche || '' }
+            ];
+            
+            keyResponses.forEach(item => {
+                if (item.value && y < pageHeight - 30) {
+                    doc.setFontSize(11);
+                    doc.setTextColor(...primaryColor);
+                    doc.text(cleanTextForPDF(item.label) + ':', margin, y);
+                    
+                    y += 6;
+                    doc.setFontSize(9);
+                    doc.setTextColor(...textColor);
+                    const cleanValue = cleanTextForPDF(item.value.substring(0, 300));
+                    const responseLines = doc.splitTextToSize(cleanValue, pageWidth - 2*margin);
+                    doc.text(responseLines, margin, y);
+                    
+                    y += (responseLines.length * 4) + 8;
+                }
+            });
+            
+            // Footer
+            const footerY = pageHeight - 15;
+            doc.setFillColor(...primaryColor);
+            doc.rect(0, footerY - 5, pageWidth, 20, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(8);
+            doc.text('Generateur de Why - Decouvrez votre raison d\'etre', margin, footerY);
+            doc.text('www.votre-site.com', pageWidth - margin - 40, footerY);
+            
+            // Sauvegarder
+            const fileName = `mon-why-${new Date().toISOString().split('T')[0]}.pdf`;
+            doc.save(fileName);
+            
+            alert(`✅ PDF généré avec succès : ${fileName}`);
         }
 
         function shareWhy() {
@@ -1101,6 +1294,103 @@
                 updateProgress();
                 updateNavigation();
                 updateValueCount();
+            }
+        }
+
+        // Fonction pour charger des données de test
+        function loadTestData() {
+            if (confirm('Cette action va charger des données de test et vous amener directement au résultat. Continuer ?')) {
+                // Réinitialiser d'abord
+                currentStep = 1;
+                selectedValues = [];
+                selectedEmotion = '';
+                userResponses = {};
+                
+                // Données de test réalistes
+                // Étape 2: Motivations
+                document.getElementById('q2_1').value = "Quand j'ai organisé un atelier pour aider des entrepreneurs débutants à structurer leur projet. Voir leurs yeux s'illuminer quand ils comprenaient enfin comment donner vie à leur idée était magique.";
+                document.getElementById('q2_2').value = "L'inégalité des chances dans l'accès à l'entrepreneuriat. Trop de bonnes idées meurent par manque d'accompagnement ou de réseau.";
+                document.getElementById('q2_3').value = "Quand on me dit que j'ai le don de rendre simple ce qui paraît compliqué, et que j'inspire confiance même dans les moments difficiles.";
+                document.getElementById('q2_4').value = "Je passerais mes journées à voyager pour rencontrer des entrepreneurs du monde entier, comprendre leurs défis et créer des solutions d'accompagnement innovantes.";
+                
+                // Étape 3: Valeurs (sélectionner 5 valeurs)
+                selectedValues = ['🎯 Excellence', '🤝 Bienveillance', '🚀 Innovation', '🎓 Apprentissage', '🌍 Impact social'];
+                
+                // Mettre à jour l'affichage des valeurs
+                document.querySelectorAll('.value-card').forEach(card => {
+                    const valueName = card.querySelector('h4').textContent;
+                    if (selectedValues.includes(valueName)) {
+                        card.classList.add('selected');
+                    }
+                });
+                
+                // Étape 4: Impact
+                document.getElementById('q4_1').value = "Un monde où chaque personne avec une idée entrepreneuriale aurait accès aux outils, connaissances et réseau nécessaires pour la concrétiser, peu importe son origine sociale.";
+                document.getElementById('q4_2').value = "Les entrepreneurs en herbe, les créatifs bloqués par les aspects business, et tous ceux qui ont des idées mais ne savent pas par où commencer.";
+                document.getElementById('q4_3').value = "Le fossé entre avoir une bonne idée et savoir la transformer en projet viable et rentable.";
+                document.getElementById('q4_4').value = "Par le nombre de projets lancés avec succès, la diversité des entrepreneurs accompagnés, et surtout par les témoignages de transformation personnelle.";
+                
+                // Étape 5: Unicité
+                document.getElementById('q5_1').value = "Ma capacité à décomposer les processus complexes en étapes simples et concrètes, et mon don pour rassurer tout en challengeant.";
+                document.getElementById('q5_2').value = "J'aborde chaque problème avec empathie d'abord, puis je construis des solutions personnalisées qui respectent la personnalité de chacun.";
+                document.getElementById('q5_3').value = "Je ne donne pas de recettes toutes faites, mais j'aide chacun à trouver son propre chemin en s'appuyant sur ses forces naturelles.";
+                document.getElementById('q5_4').value = "Un écosystème entrepreneurial où la bienveillance et l'entraide remplacent la compétition destructrice.";
+                
+                // Étape 6: Émotion et passion
+                selectedEmotion = 'inspiration';
+                document.querySelectorAll('.emotion-card').forEach(card => {
+                    if (card.onclick.toString().includes('inspiration')) {
+                        card.classList.add('selected');
+                    }
+                });
+                
+                document.getElementById('q6_1').value = "Ce qui me passionne le plus, c'est de voir une étincelle dans les yeux de quelqu'un qui réalise soudain qu'il peut transformer son rêve en réalité.";
+                document.getElementById('q6_2').value = "Imagine un monde où ton idée géniale ne reste pas bloquée dans ta tête. En 30 minutes, je peux t'aider à voir comment la transformer en projet concret. Es-tu prêt à donner vie à tes rêves ?";
+                
+                // Sauvegarder toutes les données
+                userResponses = {
+                    motivations: {
+                        moment_vivant: document.getElementById('q2_1').value,
+                        colere: document.getElementById('q2_2').value,
+                        compliment: document.getElementById('q2_3').value,
+                        vie_ideale: document.getElementById('q2_4').value
+                    },
+                    values: selectedValues,
+                    impact: {
+                        monde_ideal: document.getElementById('q4_1').value,
+                        qui_aider: document.getElementById('q4_2').value,
+                        probleme_resoudre: document.getElementById('q4_3').value,
+                        mesure_succes: document.getElementById('q4_4').value
+                    },
+                    unicite: {
+                        super_pouvoirs: document.getElementById('q5_1').value,
+                        approche: document.getElementById('q5_2').value,
+                        differentiation: document.getElementById('q5_3').value,
+                        vision: document.getElementById('q5_4').value
+                    },
+                    emotion: {
+                        emotion_principale: selectedEmotion,
+                        passion: document.getElementById('q6_1').value,
+                        elevator_pitch: document.getElementById('q6_2').value
+                    }
+                };
+                
+                // Aller directement à l'étape 7 (résultat)
+                document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
+                currentStep = 7;
+                document.getElementById('step7').classList.add('active');
+                
+                updateProgress();
+                updateNavigation();
+                updateValueCount();
+                
+                // Générer le Why avec les données de test
+                generateWhy();
+                
+                // Notifier l'utilisateur
+                setTimeout(() => {
+                    alert('✅ Données de test chargées ! Vous pouvez maintenant explorer le résultat et tester les fonctionnalités.');
+                }, 3000);
             }
         }
 
