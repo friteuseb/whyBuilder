@@ -1,8 +1,8 @@
-# 🎯 WhyBuilder - Découvrez Votre Raison d'Être
+# WhyBuilder - Découvrez votre raison d'être
 
-**Transformez votre vision en mission claire et inspirante** avec WhyBuilder, l'outil qui vous guide dans la découverte de votre "Why" selon la méthode révolutionnaire de Simon Sinek.
+**Transformez votre vision en mission claire et inspirante** avec WhyBuilder, mon outil qui vous guide dans la découverte de votre "Why" selon la méthode révolutionnaire de Simon Sinek.
 
-## 🚀 Pourquoi WhyBuilder ?
+## Pourquoi WhyBuilder ?
 
 > *"Les gens n'achètent pas ce que vous faites, ils achètent pourquoi vous le faites"* - Simon Sinek
 
@@ -13,9 +13,9 @@
 ✅ **Inspirer et motiver** votre entourage ou vos équipes  
 ✅ **Prendre des décisions** en cohérence avec votre mission  
 
-## 🎯 Deux Versions Adaptées à Vos Besoins
+## Deux versions adaptées à vos besoins
 
-### 👤 **WhyPerso** - Pour Votre Développement Personnel
+### **WhyPerso** - Pour votre développement personnel
 *Idéal pour :* Entrepreneurs, freelances, professionnels en reconversion, étudiants
 
 **Découvrez votre mission personnelle** à travers un parcours introspectif de 7 étapes :
@@ -24,7 +24,7 @@
 - Formulez votre "Why" personnel unique
 - Obtenez un PDF professionnel à partager
 
-### 🏢 **WhyPro** - Pour Votre Organisation
+### **WhyPro** - Pour votre organisation
 *Idéal pour :* Dirigeants, équipes dirigeantes, consultants, coachs d'entreprise
 
 **Définissez la raison d'être de votre organisation** avec :
@@ -33,64 +33,64 @@
 - Analyse de l'impact sur votre marché
 - Communication corporate adaptée
 
-## 🤖 Boostez Votre Why avec l'Intelligence Artificielle
+## Boostez votre Why avec l'intelligence artificielle
 
-**Votre Why manque de punch ?** Notre assistant IA transforme votre raison d'être en message puissant et mémorable.
+**Votre Why manque de punch ?** Mon assistant IA transforme votre raison d'être en message puissant et mémorable.
 
-### ✨ 4 Styles d'Amélioration Professionnels
-🎯 **Professionnel et impactant** - Parfait pour les présentations business  
-❤️ **Inspirant et émotionnel** - Touche le cœur de votre audience  
-⚡ **Concis et percutant** - Direct et inoubliable  
-📖 **Narratif et engageant** - Raconte votre histoire unique  
+### 4 styles d'amélioration professionnels
+**Professionnel et impactant** - Parfait pour les présentations business  
+**Inspirant et émotionnel** - Touche le cœur de votre audience  
+**Concis et percutant** - Direct et inoubliable  
+**Narratif et engageant** - Raconte votre histoire unique  
 
-### 🔄 Comment ça fonctionne
+### Comment ça fonctionne
 1. Complétez votre parcours WhyPerso ou WhyPro
-2. Cliquez sur "🤖 Améliorer avec IA"
+2. Cliquez sur "Améliorer avec IA"
 3. Choisissez votre style préféré
 4. Obtenez 3 versions optimisées instantanément
 5. Adoptez celle qui vous correspond le mieux
 
-## 🚀 Prise en Main Ultra-Rapide
+## Prise en main ultra-rapide
 
-### Étape 1 : Lancez l'outil
+### Étape 1 : lancez l'outil
 Ouvrez simplement le fichier `index.html` dans votre navigateur - **aucune installation requise !**
 
-### Étape 2 : Choisissez votre parcours
-**🔸 WhyPerso** → Développement personnel et professionnel individuel  
-**🔸 WhyPro** → Raison d'être d'entreprise ou d'équipe
+### Étape 2 : choisissez votre parcours
+**WhyPerso** → Développement personnel et professionnel individuel  
+**WhyPro** → Raison d'être d'entreprise ou d'équipe
 
-### Étape 3 : Laissez-vous guider
+### Étape 3 : laissez-vous guider
 **7 étapes intuitives** vous mènent vers votre Why authentique :
 - Questions profondes mais accessibles
 - Interface claire et engageante  
 - Sauvegarde automatique de vos réponses
 
-### Étape 4 : Exportez votre résultat
+### Étape 4 : exportez votre résultat
 **PDF professionnel** prêt à partager avec vos équipes, clients ou partenaires
 
 ---
 
-## 🎁 Essayez Immédiatement avec Nos Données de Test
+## Essayez immédiatement avec mes données de test
 
-**Pressé de voir le résultat ?** Cliquez sur "🧪 Charger des données de test" pour découvrir toutes les fonctionnalités avec un exemple complet. Parfait pour une démonstration ou pour comprendre le potentiel de l'outil.
+**Pressé de voir le résultat ?** Cliquez sur "Charger des données de test" pour découvrir toutes les fonctionnalités avec un exemple complet. Parfait pour une démonstration ou pour comprendre le potentiel de l'outil.
 
-## 💡 Qui Utilise WhyBuilder ?
+## Qui utilise WhyBuilder ?
 
-### 👨‍💼 **Professionnels & Entrepreneurs**
+### **Professionnels & entrepreneurs**
 *"J'ai enfin pu articuler clairement ma mission d'entrepreneur. Mes clients comprennent maintenant pourquoi ils doivent travailler avec moi."*
 
-### 🏢 **Équipes Dirigeantes**  
+### **Équipes dirigeantes**  
 *"WhyPro nous a aidés à aligner toute l'équipe sur notre raison d'être. Nos décisions stratégiques sont maintenant cohérentes."*
 
-### 🎯 **Coaches & Consultants**
+### **Coaches & consultants**
 *"Outil parfait pour mes clients en quête de sens. Le processus structuré facilite les sessions de coaching."*
 
-### 🔄 **Professionnels en Transition**
+### **Professionnels en transition**
 *"En période de reconversion, WhyBuilder m'a donné la clarté nécessaire pour choisir ma nouvelle voie."*
 
 ---
 
-## 🔧 Configuration IA (Optionnelle)
+## Configuration IA (optionnelle)
 
 **Vous voulez pousser votre Why au niveau supérieur ?** Activez l'assistant IA en quelques clics :
 
@@ -98,19 +98,19 @@ Ouvrez simplement le fichier `index.html` dans votre navigateur - **aucune insta
 2. **Ajoutez votre clé API** OpenAI ou Anthropic ([Guide ici](https://platform.openai.com))
 3. **C'est tout !** L'IA s'active automatiquement
 
-> 🔒 **100% sécurisé** : Vos clés API ne quittent jamais votre navigateur
+> **100% sécurisé** : vos clés API ne quittent jamais votre navigateur
 
 ---
 
-## 🚀 Commencez Votre Transformation Maintenant
+## Commencez votre transformation maintenant
 
 **Prêt à découvrir votre Why ?** 
 
-➡️ **[Téléchargez WhyBuilder](.)** et lancez `index.html`  
-➡️ **5 minutes** suffisent pour commencer  
-➡️ **Aucune compétence technique** requise  
+**[Téléchargez WhyBuilder](.)** et lancez `index.html`  
+**5 minutes** suffisent pour commencer  
+**Aucune compétence technique** requise  
 
-### 💰 Pourquoi Choisir WhyBuilder ?
+### Pourquoi choisir WhyBuilder ?
 
 ✅ **Gratuit et sans inscription**  
 ✅ **Basé sur la méthode éprouvée** de Simon Sinek  
