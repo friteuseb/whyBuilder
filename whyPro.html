@@ -1332,10 +1332,10 @@
             // Titre principal
             doc.setTextColor(255, 255, 255);
             doc.setFontSize(22);
-            doc.text('MON WHY PERSONNEL', margin, 18);
+            doc.text('NOTRE WHY D\'ENTREPRISE', margin, 18);
             
             doc.setFontSize(10);
-            doc.text('Raison d\'être et mission de vie - ' + new Date().toLocaleDateString('fr-FR'), margin, 28);
+            doc.text('Raison d\'être et mission d\'entreprise - ' + new Date().toLocaleDateString('fr-FR'), margin, 28);
             
             y = 45;
             
@@ -1348,7 +1348,7 @@
             
             doc.setTextColor(...textColor);
             doc.setFontSize(12);
-            doc.text('MON WHY', margin + 5, y + 8);
+            doc.text('NOTRE WHY', margin + 5, y + 8);
             
             doc.setFontSize(9);
             const whyText = cleanTextForPDF(document.getElementById('finalWhy').textContent);
@@ -1366,7 +1366,7 @@
             let col1Y = y;
             doc.setFontSize(11);
             doc.setTextColor(...primaryColor);
-            doc.text('MA MISSION', col1X, col1Y);
+            doc.text('NOTRE MISSION', col1X, col1Y);
             
             col1Y += 8;
             doc.setFontSize(8);
@@ -1380,7 +1380,7 @@
             // Valeurs dans la colonne 1
             doc.setFontSize(11);
             doc.setTextColor(...primaryColor);
-            doc.text('MES VALEURS', col1X, col1Y);
+            doc.text('NOS VALEURS', col1X, col1Y);
             
             col1Y += 8;
             doc.setFontSize(8);
@@ -1397,7 +1397,7 @@
             let col2Y = y;
             doc.setFontSize(11);
             doc.setTextColor(...primaryColor);
-            doc.text('MON IMPACT', col2X, col2Y);
+            doc.text('NOTRE IMPACT', col2X, col2Y);
             
             col2Y += 8;
             doc.setFontSize(8);
